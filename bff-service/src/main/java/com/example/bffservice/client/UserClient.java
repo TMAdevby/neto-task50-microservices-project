@@ -1,6 +1,7 @@
 package com.example.bffservice.client;
 
-import com.example.bffservice.model.UserProfile;
+
+import com.example.bffservice.dto.UserDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -17,11 +18,12 @@ public class UserClient {
         this.restTemplate = restTemplate;
     }
 
-    public UserProfile getUserProfile(Long userId) {
+    public UserDto getUserById(Long userId) {
         String url = userServiceUrl + "/api/users/" + userId;
 
         try {
-            return restTemplate.getForObject(url, UserProfile.class);
+            // RestTemplate получит JSON и конвертирует в UserDto
+            return restTemplate.getForObject(url, UserDto.class);
         } catch (Exception e) {
             System.err.println("Ошибка при вызове User Service: " + e.getMessage());
             return null;

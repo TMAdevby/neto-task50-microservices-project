@@ -1,17 +1,18 @@
-package com.example.userservice.model;
+package com.example.bffservice.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserDto {
 
     private Long id;
-    private String lastName;
     private String firstName;
+    private String lastName;
     private String middleName;
     private String deliveryAddress;
     private String phone;

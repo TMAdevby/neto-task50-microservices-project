@@ -2,6 +2,7 @@ package com.example.bffservice.controller;
 
 import com.example.bffservice.client.OrderClient;
 import com.example.bffservice.client.UserClient;
+import com.example.bffservice.dto.UserDto;
 import com.example.bffservice.model.OrderInfo;
 import com.example.bffservice.model.UserFullInfo;
 import com.example.bffservice.model.UserProfile;
@@ -26,16 +27,28 @@ public class BffController {
     @GetMapping("/user/{userId}")
     public UserFullInfo getUserFullInfo(@PathVariable("userId") Long userId) {
 
-        UserProfile userProfile = userClient.getUserProfile(userId);
-
-        if (userProfile == null) {
+        UserDto user = userClient.getUserById(userId);
+        if (user == null) {
             return null;
         }
+
+        UserProfile profile = new UserProfile();
+        profile.setId(user.getId());
+
+        profile.setFullName(
+                user.getLastName() + " " +
+                        user.getFirstName() + " " +
+                        user.getMiddleName()
+        );
+
+        profile.setDeliveryAddress(user.getDeliveryAddress());
+        profile.setPhone(user.getPhone());
+        profile.setEmail(user.getEmail());
 
         List<OrderInfo> orders = orderClient.getOrdersByUser(userId);
 
         UserFullInfo fullInfo = new UserFullInfo();
-        fullInfo.setUserProfile(userProfile);
+        fullInfo.setUserProfile(profile);  // ← Преобразованный профиль
         fullInfo.setOrders(orders);
 
         return fullInfo;
