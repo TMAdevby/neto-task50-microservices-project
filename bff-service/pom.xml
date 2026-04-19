@@ -15,7 +15,6 @@
     <artifactId>bff-service</artifactId>
     <name>BFF Service</name>
     <description>BFF-микросервис для агрегации данных</description>
-
     <dependencies>
 
         <dependency>
