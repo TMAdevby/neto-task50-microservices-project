@@ -15,8 +15,8 @@
     <artifactId>order-service</artifactId>
     <name>Order Service</name>
     <description>Микросервис для хранения информации о заказах</description>
-
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
