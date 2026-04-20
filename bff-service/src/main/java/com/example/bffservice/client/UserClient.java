@@ -22,7 +22,6 @@ public class UserClient {
         String url = userServiceUrl + "/api/users/" + userId;
 
         try {
-            // RestTemplate получит JSON и конвертирует в UserDto
             return restTemplate.getForObject(url, UserDto.class);
         } catch (Exception e) {
             System.err.println("Ошибка при вызове User Service: " + e.getMessage());

@@ -48,7 +48,7 @@ public class BffController {
         List<OrderInfo> orders = orderClient.getOrdersByUser(userId);
 
         UserFullInfo fullInfo = new UserFullInfo();
-        fullInfo.setUserProfile(profile);  // ← Преобразованный профиль
+        fullInfo.setUserProfile(profile);
         fullInfo.setOrders(orders);
 
         return fullInfo;
